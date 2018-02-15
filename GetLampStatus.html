@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>NETPIE demo</title>
+</head>
+
+<body>
+    <script>
+        var APPID = "Home1669"; //enter your appid
+        var KEY = "gv3b3byGLJWITtI"; //enter your key
+        var SECRET = "nQ6hHpvvOirSE5ngxebIMf77D"; //enter your secret
+        var Topic = "/LampStatus";
+
+        function GetButtonStatus() {
+            var url = 'https://api.netpie.io/topic/' + APPID + Topic + '?auth=' + KEY + ':' + SECRET;
+            var xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.onreadystatechange = function () {
+                if (xmlHttp.status == 200 && xmlHttp.readyState == 4) {
+                    document.body.className = 'ok';
+                    var result = xmlHttp.responseText;
+                    window.alert(result);
+                } else {
+                    document.body.className = 'error';
+                }
+            }
+            xmlHttp.open('GET', url, true);
+            xmlHttp.send(null);
+        }    
+    </script>
+
+    <center>
+        <button onclick="GetButtonStatus()" id="Button">Check Lamp Status</button>
+    </center>
+</body>
+
+</html>
+
+<!-- GET -->
+<!-- https://api.netpie.io/topic/Home1669/LampStatus?auth=dIMLEvdge1U9S6v:Q1liTUcJItJGESEJLNPD2IUTq -->

@@ -1,0 +1,40 @@
+<html>
+
+<body>
+    <script>
+        var APPID = "Home1669"; //enter your appid
+        var KEY = "gv3b3byGLJWITtI"; //enter your key
+        var SECRET = "nQ6hHpvvOirSE5ngxebIMf77D"; //enter your secret
+        var Topic = "/LampStatus";
+
+        function PressButtonOn() {
+            var url = 'https://api.netpie.io/topic/' + APPID + Topic + '?retain&auth=' + KEY + ':' + SECRET;
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open('PUT', url, true);
+            xmlHttp.send('ON');
+            window.alert(url);//for debugging purpose
+        }
+        function PressButtonOff() {
+            var url = 'https://api.netpie.io/topic/' + APPID + Topic + '?retain&auth=' + KEY + ':' + SECRET;
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open('PUT', url, true);
+            xmlHttp.send('OFF');
+            window.alert(url); //for debugging purpose
+        }    
+    </script>
+
+    <center>
+        <button onclick="PressButtonOn()" id="ButtonOn">ON</button>
+        <button onclick="PressButtonOff()" id="ButtonOff">OFF</button>
+    </center>
+</body>
+
+</html>
+
+<!-- PUT -->
+<!-- https://api.netpie.io/topic/Home1669/LampStatus?retain&auth=dIMLEvdge1U9S6v:Q1liTUcJItJGESEJLNPD2IUTq -->
+<!-- 
+{
+    "payload": "ON"
+}
+ -->
